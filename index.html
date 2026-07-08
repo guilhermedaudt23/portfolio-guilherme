@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guilherme Daudt — QA Analyst Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0E1A; --bg2: #0F1525; --bg3: #141B2D;
+    --card: #1A2235; --card2: #1E2840; --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14); --text: #E8EDF5; --muted: #8892A4;
+    --accent: #4F9EF8; --accent2: #6C63FF; --green: #3DD68C;
+    --amber: #F5A623; --red: #FF6B6B; --teal: #2DD4BF; --pink: #F472B6;
+  }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-size: 16px; font-weight: 700; color: var(--accent); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  main { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0 3rem; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 60px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(79,158,248,0.1); border: 1px solid rgba(79,158,248,0.25); color: var(--accent); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.5px; text-transform: uppercase; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -1px; }
+  .hero h1 span { color: var(--accent); }
+  .hero .subtitle { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-primary { background: var(--accent); color: #0A0E1A; }
+  .btn-primary:hover { background: #6ab3ff; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .stat-num { font-size: 1.8rem; font-weight: 800; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .section-header { margin-bottom: 2.5rem; }
+  .section-header h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.5px; }
+  .section-header p { color: var(--muted); margin-top: 8px; font-size: 14px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: all 0.2s; }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .skill-icon { font-size: 22px; margin-bottom: 10px; }
+  .skill-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .skill-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+  .skill-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; }
+  .skill-fill { height: 100%; border-radius: 2px; }
+  .tools-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-chip { display: flex; align-items: center; gap: 7px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 13px; font-weight: 500; transition: border-color 0.2s; }
+  .tool-chip:hover { border-color: var(--border2); }
+  .tool-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .project-card.manual::before { background: var(--accent); }
+  .project-card.api::before { background: var(--green); }
+  .project-card.mixed::before { background: var(--accent2); }
+  .project-card.bug::before { background: var(--red); }
+  .project-card:hover { border-color: var(--border2); }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 10px; }
+  .project-title { font-weight: 700; font-size: 15px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; }
+  .tag-manual { background: rgba(79,158,248,0.12); color: var(--accent); }
+  .tag-api { background: rgba(61,214,140,0.12); color: var(--green); }
+  .tag-bug { background: rgba(255,107,107,0.12); color: var(--red); }
+  .tag-doc { background: rgba(245,166,35,0.12); color: var(--amber); }
+  .project-desc { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 10px 0 1rem; }
+  .project-results { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .result-num { font-size: 1.1rem; font-weight: 700; }
+  .result-label { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .project-links { display: flex; gap: 8px; }
+  .project-link { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+  .project-link:hover { color: var(--text); border-color: var(--border2); }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; align-items: flex-start; gap: 12px; transition: border-color 0.2s; }
+  .cert-card:hover { border-color: var(--border2); }
+  .cert-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .cert-title { font-weight: 600; font-size: 13px; margin-bottom: 3px; }
+  .cert-by { font-size: 12px; color: var(--muted); }
+  .cert-status { margin-top: 6px; font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+  .cert-done { color: var(--green); }
+  .cert-prog { color: var(--amber); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-text p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 1rem; }
+  .values-list { display: flex; flex-direction: column; gap: 10px; }
+  .value-item { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 13px; }
+  .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-decoration: none; transition: all 0.2s; display: block; }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-icon { font-size: 22px; margin-bottom: 8px; }
+  .contact-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .contact-val { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 3px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  html { scroll-behavior: smooth; }
+  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo">QA Portfolio</span>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projetos</a>
+    <a href="#certificates">Experiência</a>
+    <a href="#contact">Contato</a>
+  </div>
+</nav>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-badge">disponível para novas oportunidades</div>
+    <h1>Olá, sou <span>Guilherme Daudt</span><br>QA Analyst</h1>
+    <p class="subtitle">QA Analyst júnior com foco em testes manuais, testes de API e testes exploratórios. Apaixonado por encontrar bugs antes que os usuários encontrem.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">📁 Ver projetos</a>
+      <a href="#contact" class="btn btn-outline">✉️ Entrar em contato</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Bugs reportados</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Projetos no portfólio</div></div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Meses de experiência</div></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Squads (mobile e desktop)</div></div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section id="skills">
+    <div class="section-header">
+      <div class="section-label">habilidades</div>
+      <h2>O que eu faço</h2>
+      <p>Áreas de foco e nível atual de conhecimento</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🧪</div><div class="skill-name">Testes Manuais</div><div class="skill-sub">Casos de teste, cenários BDD, exploratório, regressão</div><div class="skill-bar"><div class="skill-fill" style="width:100%;background:var(--accent)"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔌</div><div class="skill-name">Testes de API</div><div class="skill-sub">REST, Postman, validação de payloads e status HTTP</div><div class="skill-bar"><div class="skill-fill" style="width:100%;background:var(--green)"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📄</div><div class="skill-name">Documentação</div><div class="skill-sub">Planos de teste, relatórios de bug, critérios de aceite</div><div class="skill-bar"><div class="skill-fill" style="width:100%;background:var(--amber)"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔁</div><div class="skill-name">Metodologias Ágeis</div><div class="skill-sub">Scrum, Kanban, cerimônias, backlog e sprints</div><div class="skill-bar"><div class="skill-fill" style="width:100%;background:var(--accent2)"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">Automação com Cypress</div><div class="skill-sub">Testes end-to-end, primeiros scripts de automação</div><div class="skill-bar"><div class="skill-fill" style="width:100%;background:var(--red)"></div></div></div>
+    </div>
+    <div style="margin-top:2rem">
+      <div class="section-label" style="margin-bottom:1rem">ferramentas</div>
+      <div class="tools-wrap">
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--accent)"></div>Postman</div>
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--accent2)"></div>Git / GitHub</div>
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--teal)"></div>Chrome DevTools</div>
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--green)"></div>Notion</div>
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--red)"></div>Cypress</div>
+        <div class="tool-chip"><div class="tool-dot" style="background:var(--amber)"></div>Trello</div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section id="projects">
+    <div class="section-header">
+      <div class="section-label">projetos</div>
+      <h2>Cases no portfólio</h2>
+      <p>Projetos práticos demonstrando meu processo de teste</p>
+    </div>
+    <div class="projects-list">
+      <div class="project-card manual">
+        <div class="project-header">
+          <div><div class="project-title">MegaPizza — Testes Exploratórios em E-commerce</div><div class="project-tags"><span class="tag tag-manual">Exploratório</span><span class="tag tag-bug">7 bugs</span><span class="tag tag-doc">Markdown + Excel</span></div></div>
+          <div class="project-links"><a href="https://github.com/guilhermedaudt23/portfolio-guilherme/tree/main/MegaPizza" class="project-link">🐙 GitHub</a></div>
+        </div>
+        <p class="project-desc">Testes exploratórios realizados no site de e-commerce de uma pizzaria local em produção. 7 bugs identificados e documentados em diferentes níveis de severidade, com relatórios em Markdown e Excel.</p>
+        <div class="project-results">
+          <div class="result-item"><div class="result-num" style="color:var(--red)">7</div><div class="result-label">Bugs encontrados</div></div>
+          <div class="result-item"><div class="result-num" style="color:var(--accent)">2</div><div class="result-label">Formatos de relatório</div></div>
+          <div class="result-item"><div class="result-num" style="color:var(--green)">Prod</div><div class="result-label">Ambiente real</div></div>
+        </div>
+      </div>
+      <div class="project-card manual">
+        <div class="project-header">
+          <div><div class="project-title">SauceDemo — Testes Manuais de E-commerce</div><div class="project-tags"><span class="tag tag-manual">Manual</span><span class="tag tag-doc">Casos de teste</span></div></div>
+          <div class="project-links"><a href="https://github.com/guilhermedaudt23/portfolio-guilherme/tree/main/SauceDemo" class="project-link">🐙 GitHub</a></div>
+        </div>
+        <p class="project-desc">Testes manuais na aplicação de e-commerce fictícia SauceDemo, ambiente de prática para consolidar fundamentos de QA. Casos de teste estruturados e exploração das funcionalidades com apoio do Chrome DevTools.</p>
+        <div class="project-results">
+          <div class="result-item"><div class="result-num" style="color:var(--accent)">Manual</div><div class="result-label">Tipo de teste</div></div>
+          <div class="result-item"><div class="result-num" style="color:var(--teal)">DevTools</div><div class="result-label">Ferramenta usada</div></div>
+        </div>
+      </div>
+      <div class="project-card bug">
+        <div class="project-header">
+          <div><div class="project-title">Steam — Bug de Persistência de Filtros</div><div class="project-tags"><span class="tag tag-bug">Bug real</span><span class="tag tag-doc">Loom</span><span class="tag tag-doc">Ticket de suporte</span></div></div>
+          <div class="project-links"><a href="https://github.com/guilhermedaudt23/portfolio-guilherme/tree/main/Steam" class="project-link">🐙 GitHub</a></div>
+        </div>
+        <p class="project-desc">Bug encontrado na Steam Community Market: um problema de persistência de filtros. Documentado com vídeo (Loom) e um ticket de suporte pronto para envio, no padrão usado por times de QA.</p>
+        <div class="project-results">
+          <div class="result-item"><div class="result-num" style="color:var(--red)">1</div><div class="result-label">Bug em produção</div></div>
+          <div class="result-item"><div class="result-num" style="color:var(--amber)">🎥</div><div class="result-label">Evidência em vídeo</div></div>
+          <div class="result-item"><div class="result-num" style="color:var(--green)">Prod</div><div class="result-label">Ambiente real</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section id="certificates">
+    <div class="section-header">
+      <div class="section-label">experiência</div>
+      <h2>Trajetória profissional</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card"><div class="cert-icon" style="background:rgba(79,158,248,0.12)">🏦</div><div><div class="cert-title">Villela Brasil Bank — Squad Bancarize</div><div class="cert-by">Testes de aplicativo mobile · Scrum</div></div></div>
+      <div class="cert-card"><div class="cert-icon" style="background:rgba(61,214,140,0.12)">💻</div><div><div class="cert-title">Villela Brasil Bank — Squad Inovação</div><div class="cert-by">Testes desktop (front-end e back-end) de novos produtos · Kanban</div></div></div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section id="about">
+    <div class="section-header"><div class="section-label">sobre mim</div><h2>Quem sou eu</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Sou Analista de QA Júnior em início de carreira, com experiência prática em testes manuais de aplicações web e mobile. Tenho paixão por qualidade de software e acredito que um bom QA vai além de encontrar bugs: ele contribui para entregar produtos mais confiáveis e uma melhor experiência para o usuário.</p>
+        <p>Atuei durante 7 meses na Villela Brasil Bank, participando de squads ágeis utilizando Scrum e Kanban, realizando validações funcionais, testes exploratórios e colaborando com o time no processo de garantia da qualidade.</p>
+        <p>Atualmente estou aprofundando meus conhecimentos em testes de API com Postman e me preparando para atuar com automação utilizando Cypress.</p>
+        <p>Acredito que qualidade é uma responsabilidade compartilhada por toda a equipe, e busco uma oportunidade onde eu possa continuar aprendendo, evoluindo e contribuindo para a entrega de software com excelência.</p>
+      </div>
+      <div class="values-list">
+        <div class="value-item">🎯 Foco em qualidade end-to-end</div>
+        <div class="value-item">📝 Documentação clara e detalhada</div>
+        <div class="value-item">🤝 Comunicação com devs e produto</div>
+        <div class="value-item">📈 Aprendizado contínuo</div>
+        <div class="value-item">⚡ Agilidade e adaptabilidade</div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section id="contact">
+    <div class="section-header"><div class="section-label">contato</div><h2>Vamos conversar</h2><p>Aberto a oportunidades</p></div>
+    <div class="contact-cards">
+      <a href="mailto:guilhermecelentedaudt@gmail.com" class="contact-card"><div class="contact-icon">✉️</div><div class="contact-label">E-mail</div><div class="contact-val">guilhermecelentedaudt@gmail.com</div></a>
+      <a href="https://www.linkedin.com/in/guilherme-daudt-5267bb1b9/" class="contact-card"><div class="contact-icon">💼</div><div class="contact-label">LinkedIn</div><div class="contact-val">guilherme-daudt-5267bb1b9</div></a>
+      <a href="https://github.com/guilhermedaudt23" class="contact-card"><div class="contact-icon">🐙</div><div class="contact-label">GitHub</div><div class="contact-val">github.com/guilhermedaudt23</div></a>
+    </div>
+  </section>
+  <div style="text-align:center;padding:2rem 0 3rem;color:var(--muted);font-size:12px">QA Portfolio · 2026</div>
+</main>
+</body>
+</html>
