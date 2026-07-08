@@ -1,6 +1,7 @@
-# Portfólio de QA — Guilherme Daudt
+# Portfólio QA — Guilherme Daudt
 
-Olá! Sou o Guilherme, QA Analyst Jr. com experiência em testes manuais, testes de API e testes exploratórios. Este repositório reúne alguns dos projetos que desenvolvi para praticar e demonstrar minhas habilidades em Qualidade de Software.
+Oi! 
+Sou o Guilherme, tenho 26 anos e sou QA Analyst Jr. com experiência em testes manuais, testes de API e testes exploratórios. Este repositório reúne alguns dos projetos que desenvolvi para praticar e demonstrar minhas habilidades em Qualidade de Software.
 
 ## 📫 Contato
 
@@ -61,6 +62,9 @@ Bug encontrado na Steam Community Market: um problema de persistência de filtro
 
 ## 🎓 Sobre mim
 
-Sou QA Analyst com experiência prática em testes manuais e de API, incluindo passagem pela Villela Brasil Bank, onde atuei em squads de teste mobile e desktop. Atualmente em busca de novas oportunidades na área de Qualidade de Software, com foco em construir uma base sólida em automação de testes e boas práticas de QA.
+Sou QA Analyst com experiência prática em testes manuais e de API, incluindo passagem pela Villela Brasil Bank, onde atuei em squads de teste mobile e desktop. Atuei por 7 meses em duas squads distintas. Na squad Bancarize, trabalhei com testes manuais em aplicativo mobile de banco digital, validando fluxos financeiros críticos e garantindo a qualidade das entregas. Já na squad de Inovação, ampliei minha atuação para testes de front-end e back-end em novos produtos da empresa, o que me deu uma visão mais ampla do ciclo de desenvolvimento.
+Nessa trajetória, aprendi a trabalhar dentro de um ambiente ágil com Scrum e Kanban, a me comunicar bem com desenvolvedores e product owners, e a pensar em qualidade desde a análise dos requisitos, e não só no final do processo. Identifiquei bugs críticos antes de irem para produção, elaborei casos de teste, relatórios de bug e trabalhei com testes de API no Postman.
+
+Atualmente em busca de novas oportunidades na área de Qualidade de Software, com foco em construir uma base sólida em automação de testes e boas práticas de qualidade.
 
 Fique à vontade para entrar em contato através do LinkedIn ou e-mail acima!
